@@ -10,7 +10,7 @@ public static class ApiDependencyInjectionConfig
         IWebHostEnvironment environment)
     {
         // Add Local Extensions
-        services.AddSwagger()
+        services.AddOpenApiConfig()
             .AddCorsPolicy()
             .AddHealthCheck(environment)
             .AddVersioning()
@@ -25,10 +25,14 @@ public static class ApiDependencyInjectionConfig
     public static WebApplication UseApi(this WebApplication app)
     {
         // Use Local Extensions
-        app.UseApiSwagger()
-            .UseApiCorsPolicy()
+        app.UseApiCorsPolicy()
             .UseApiHealthChecks()
             .ApplyMigrations();
+
+        if (!app.Environment.IsProduction())
+        {
+            app.ConfigureOpenApi(app.Environment);
+        }
 
         app.UseRouting();
         app.MapControllers();

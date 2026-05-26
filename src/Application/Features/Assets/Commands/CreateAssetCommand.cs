@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Features.Assets.Commands;
 
-public sealed class CreateAssetCommand : IRequest<Result>;
+public readonly record struct CreateAssetCommand : IRequest<Result>;

@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Features.Assets.Queries;
 
-public sealed class CheckIfExistsAssetQuery : IRequest<Result<bool>>;
+public readonly record struct CheckIfExistsAssetQuery : IRequest<Result<bool>>;

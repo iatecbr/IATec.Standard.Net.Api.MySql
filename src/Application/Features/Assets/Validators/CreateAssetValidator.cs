@@ -5,7 +5,4 @@ namespace Application.Features.Assets.Validators;
 
 public class CreateAssetValidator : AbstractValidator<CreateAssetCommand>
 {
-    public CreateAssetValidator()
-    {
-    }
 }
